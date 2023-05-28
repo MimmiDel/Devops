@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Devops
+      - name: Checkout repository
         uses: actions/checkout@v2
 
       - name: Set up Docker Buildx
@@ -28,4 +28,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/your-container-name:${{ github.sha }}
+          tags: ghcr.io/${{ github.repository_owner }}/Devops:${{ github.sha }}
