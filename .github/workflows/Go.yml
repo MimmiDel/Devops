@@ -1,21 +1,29 @@
-name: Go package
+name: Go Build and Test
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
       - name: Set up Go
-        uses: actions/setup-go@v4
+        uses: actions/setup-go@v2
         with:
-          go-version: '1.15'
+          go-version: '1.16'
 
       - name: Build
-        run: go build -v ./...
+        run: go build -o output_file_name
 
       - name: Test
-        run: go test -v ./...
+        run: go test ./...
+
